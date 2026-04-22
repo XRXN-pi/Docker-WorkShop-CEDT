@@ -5,7 +5,7 @@
 # =============================================================================
 
 # TODO(step-4a): set the builder base image as node:20.11-slim and name the stage "builder".
-FROM node:20.11-slim AS builder-slim AS builder
+FROM node:20.11-slim AS builder
 #   Do NOT use `node:latest` — we want reproducible builds across the cohort.
 
 WORKDIR /app
@@ -39,4 +39,4 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=5 \
 CMD node -e "require('http').get('http://localhost:3000/health', r => process.exit(r.statusCode===200?0:1)).on('error', () => process.exit(1))"
 
 # TODO(step-4g): declare the container start command.
-CMD ["node", "server.js"]
+CMD ["node", "src/index.js"]
