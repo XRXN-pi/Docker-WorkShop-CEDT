@@ -19,7 +19,7 @@ services:
     # TODO(step-5d): use postgres:16-alpine and define a healthcheck using pg_isready.
         image: postgres:16-alpine
         healthcheck:
-          test: ["CMD", "pg_isready -U postgres -d workshop"]
+          test: ["CMD-SHELL", "pg_isready -U postgres -d workshop"]
           interval: 5s
           timeout: 3s
           retries: 10
